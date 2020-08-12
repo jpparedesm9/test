@@ -193,6 +193,7 @@ class Operaciones extends Component {
                                     }
                                         
                                 if (esEstado) {
+                                    cabeceraInfo.width="10px";
                                     cabeceraInfo.render = (rowData) => {
                                         var icono = null;
                                         switch (rowData.estado.toString()) {
