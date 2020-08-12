@@ -196,13 +196,13 @@ class Operaciones extends Component {
                                     cabeceraInfo.width="10px";
                                     cabeceraInfo.render = (rowData) => {
                                         var icono = null;
-                                        switch (rowData.estado.toString()) {
-                                            case "1":
-                                            case "0": {
+                                        switch (rowData.estado) {
+                                            case 1:
+                                            case 0: {
                                                 icono = <CheckIcon />;
                                                 break;
                                             }
-                                            case "-1": {
+                                            case -1: {
                                                 icono = <ClearIcon />;
                                                 break;
                                             }
@@ -216,7 +216,11 @@ class Operaciones extends Component {
                                     case "fecha":{
                                         cabeceraInfo.render=(rowData)=>{
                                             return moment(eval("rowData."+cabecera.campo)).format("DD-MM-YYYY");
-                                        }
+                                        }   
+                                        break;
+                                    }
+                                    case "texto":{
+                                        cabeceraInfo.width="200px";
                                         break;
                                     }
                                     default:break;
