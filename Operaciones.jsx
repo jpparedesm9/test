@@ -10,7 +10,6 @@ import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import { NotificationManager } from 'react-notifications';
 import moment from "moment";
-
 class Operaciones extends Component {
     constructor(props) {
         super(props);
@@ -152,10 +151,14 @@ class Operaciones extends Component {
                 default: break;
             }
 
-            const cargarDetalle = esHomologacion ? EtlServicio.ObtenerDetalleHomologacion(this.state.nodoSeleccionado, this.state.fecha) : EtlServicio.ObtenerDetalles(this.state.nodoSeleccionado, this.state.fecha);
+            //const cargarDetalle = esHomologacion ? EtlServicio.ObtenerDetalleHomologacion(this.state.nodoSeleccionado, this.state.fecha) : EtlServicio.ObtenerDetalles(this.state.nodoSeleccionado, this.state.fecha);
+            
+            const cargarDetalle =EtlServicio.ObtenerDetalles(this.state.nodoSeleccionado, this.state.fecha);
+           
             cargarDetalle.then(resultado => {
 
-
+            //const resultado= {data:cabecera};  //comentar esta linea
+            //console.log("esto se debe revisar",resultado);
                 let detalle = [];
                 let detalleCabecera = [];
 
@@ -192,18 +195,19 @@ class Operaciones extends Component {
                                 if (esEstado) {
                                     cabeceraInfo.render = (rowData) => {
                                         var icono = null;
-                                        switch (parseInt(rowData.estado)) {
-                                            case 1:
-                                            case 0: {
+                                        switch (rowData.estado.toString()) {
+                                            case "1":
+                                            case "0": {
                                                 icono = <CheckIcon />;
                                                 break;
                                             }
-                                            case [-1]: {
+                                            case "-1": {
                                                 icono = <ClearIcon />;
                                                 break;
                                             }
                                             default: break;
                                         }
+
                                         return icono;
                                     }
                                 }
@@ -253,6 +257,7 @@ class Operaciones extends Component {
             cargarSubdetalle.then(resultado => {
                 let subdetalleCabecera = [];
                 const informacion = resultado.data;
+                //const informacion = subdetalle;
                 if (typeof informacion.metadataDetalleLista !== "undefined") {
                     informacion.metadataDetalleLista.forEach(registro => {
                         const columna = { title: registro.titulo, field: registro.campo };
@@ -288,8 +293,6 @@ class Operaciones extends Component {
             }
             );
         }
-
-
     }
     obtenerObjetoValidacion = () => {
         return [];
