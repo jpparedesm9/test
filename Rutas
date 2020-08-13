@@ -1,0 +1,60 @@
+--------------------------------------------------------------------------------------------
+BATCH COSTOS
+--------------------------------------------------------------------------------------------
+Obtener fechas
+http://127.0.0.1:8080/costos/fechaPresupuestada/lista
+
+Obtener detalle ejecución
+http://127.0.0.1:8080/costos/procesoBatchCosto/listaCombinaCostoDetalle/20200131
+
+Crear nuevo
+http://localhost:8080/costos/procesoBatchCosto/insertarCombinaCosto
+
+Ejecutar
+http://localhost:8080/costos/procesoBatchCosto/ejecutarBatchCosto
+
+Actualizar
+http://127.0.0.1:8080/costos/procesoBatchCosto/actualizarBatchCosto/20200131
+
+
+
+--------------------------------------------------------------------------------------------
+BATCH RENTABILIDAD
+--------------------------------------------------------------------------------------------
+Obtener fechas
+http://127.0.0.1:8080/costos/procesoBatchRentabilidad/listaGeneraRentabilidad
+
+Obtener detalle ejecución
+http://127.0.0.1:8080/costos/procesoBatchRentabilidad/listaGeneraRentabilidadDetalle/20200131
+
+Ejecutar
+http://localhost:8080/costos/procesoBatchRentabilidad/ejecutarBatchRentabilidad
+
+Actualizar
+http://127.0.0.1:8080/costos/procesoBatchRentabilidad/actualizarBatchRentabilidad/20200630
+
+
+
+--------------------------------------------------------------------------------------------
+BATCH REPORTES
+--------------------------------------------------------------------------------------------
+Obtener cabecera
+http://127.0.0.1:8080/costos/procesoBatchReporte/listaSolicitudUnica
+
+Obtener detalle
+http://127.0.0.1:8080/costos/procesoBatchReporte/listaSolicitudUnicaDetalle/{codigoSolicitudUnica}
+http://127.0.0.1:8080/costos/procesoBatchReporte/listaSolicitudUnicaDetalle/1
+
+Ejecutar
+http://localhost:8080/costos/procesoBatchReporte/ejecutarBatchReporte
+{
+  "solicitudUnica": {
+    "codigo": 4
+  },
+  "descripcion": "Prueba 2",
+  "login": "lm"
+}
+
+Actualizar
+http://127.0.0.1:8080/costos/procesoBatchReporte/actualizarBatchReporte/{codigoSolicitudUnica}
+http://127.0.0.1:8080/costos/procesoBatchReporte/actualizarBatchReporte/1
