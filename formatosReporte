@@ -1,0 +1,43 @@
+
+    obtenerFilasReporte2(temporalData) {
+        var resultado = [];
+
+        temporalData.forEach(elt => {
+            resultado.push(elt);
+            if (typeof eval("elt['subRows']") !== "undefined") {
+                var temporal2 = [];
+                temporal2 = this.obtenerFilasReporte(final, eval("elt['subRows']"));
+                temporal2.forEach(tmp => {
+                    resultado.push(tmp);
+                });
+
+            }
+        }
+        );
+        return resultado;
+    }
+    obtenerTablaReporte = (columns, data) => {
+        let temporalData = Helper.formatear(data);
+
+        const final= columns.map(registro=>{
+            registro.title=registro.Header;
+            registro.dataKey=registro.accessor;
+        });
+        const rows=this.obtenerFilasReporte2(temporalData);
+        const options={
+            didParseCell: function(data) {
+                    data.cell.styles.textColor="#000000";
+                    if((data.column.index===1)&&(data.row.index===1)){
+                    data.cell.styles.textColor= [255,127,39];
+                    data.cell.styles.fontStyle='bold';
+                    data.cell.styles.fontSize=40;
+                    }
+            },
+        };
+        const procesado={
+            columns:final,
+            rows,
+            options
+        };
+        return procesado;
+    }
