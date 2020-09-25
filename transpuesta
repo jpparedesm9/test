@@ -1,0 +1,1 @@
+const resultado=procesar[0].map((_, colIndex) => procesar.map(row => row[colIndex]));
