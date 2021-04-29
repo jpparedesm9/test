@@ -1,0 +1,77 @@
+https://www.youtube.com/watch?v=Wl8O6wW4FJU
+
+1) Install express
+2) Install Babel
+babeljs.io
+3) Install Graphql
+
+https://graphql.org/
+
+Necesario crear el archivo .babelrc > Necesario para especificar que se va a crear con Babel.
+{
+"presets":[
+"@babel/preset-env"
+]
+}
+
+Para conectar Babel con node se requiere instalar el modulo babel node
+Buscar en google npm babel node
+(npm install @babel/node -D)
+
+En package.json se puede editar la sección de scripts a fin de convertir codigo apoyandonose en Babel.
+
+"scripts":{
+"build":"babel src -d dist --source-maps",
+"start":"nodemon src/index.js --exec babel-node",
+"serve": "node dist/index.js",
+"clean": "rimraf dist"
+}
+
+npm start
+
+npm run build;
+
+
+import express from "express";
+import {graphqlHTTP} from "express-graphql";
+const app= expresss();
+
+app.get('',(req,res)=>{
+res.json({message: 'Hello world'})
+});
+
+const schema={};
+app.use('/graphql', graphqlHTTP({
+graphiql:true //showing tools for make queries,
+schema
+}));
+
+src/schema.js
+import {makeExecutableSchema} from 'graphql-tools';
+import {resolvers} from "./resolvers";
+const typeDefs={
+};
+
+export default makeExecutableSchema({
+typeDefs: typeDefs,
+resolvers:resolvers
+});
+
+
+
+./resolvers;
+export const resolvers={};
+
+Importante instalar nodemon
+
+Final mente se instala rimraf (npm i rimraf)
+
+Install graphql
+npm i graphql express-graphql graphql-tools
+
+
+Referencia:
+https://www.youtube.com/watch?v=Wl8O6wW4FJU
+
+
+
