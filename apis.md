@@ -1,16 +1,13 @@
-# Configuration
+# APIS
 
-Guide to all available configuration settings.
+En el presente apartado se exponen las apis desarrolladas para el proyecto Virtus.
 
 ---
 
-## Introduction
+## Introducción
 
-Project settings are always configured by using a YAML configuration file in the
-project directory named `mkdocs.yml`.
-
-As a minimum, this configuration file must contain the `site_name` and
-`site_url` settings. All other settings are optional.
+Todos los endpoints utilizados en el proyecto responden al formato REST.
+Se respeta el uso de métodos `GET`, `POST`, `PUT`, `DETELE` de acuerdo a la funcionalidad.
 
 ## Project information
 
