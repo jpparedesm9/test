@@ -1,0 +1,8 @@
+productArray
+let newProd=productArray.reverse();
+for(var i=0;i<newProd.length; i++){
+    if(typeof newProd[i+1]!=="undefined"){
+        newProd[i+1]["stock"]=newProd[i+1]["hijos"]*newProd[i]["stock"];
+    }
+}
+let newStock=newProd[newProd.length-1]["stock"];
